@@ -4,7 +4,7 @@
   nzTitle="Select the cars to be monitored"
   [nzClosable]="false"
   [nzOkDisabled]="listOfSelectedValue.length === 0"
-  nzOkText="start monitoring"
+  nzOkText="Start monitoring"
   (nzOnOk)="modal.destroy(); onCarsSelected.emit(listOfSelectedValue)"
   [nzCancelDisabled]="listOfSelectedValue.length === 0"
   nzCancelText="Reset"
@@ -16,6 +16,8 @@
       nzMode="multiple"
       nzPlaceHolder="Please select"
       [(ngModel)]="listOfSelectedValue"
+      [nzAutoClearSearchValue]="true"
+      [nzOptionHeightPx]="150"
     >
       <nz-option
         nzCustomContent
