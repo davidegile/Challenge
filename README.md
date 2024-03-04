@@ -1,10 +1,20 @@
 # Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Demo Frontend
+
+This project is hosted on [Vercel](https://vercel.com). It is deployed upon push of a commit to the "master" branch.
+[Demo Link](https://challenge-five-phi.vercel.app)
+
+## Demo Backend
+
+The backend for this project is provided by [Supabase](https://supabase.com). Il tipo di database utilizzato è [PostgreSQL](https://www.postgresql.org/).
+You can find the parameters to connect to the supabase project in the environment.ts file
 
 ## Code scaffolding
 

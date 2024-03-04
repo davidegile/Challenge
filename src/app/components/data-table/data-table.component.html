@@ -1,0 +1,29 @@
+<ng-template #noData>
+  <nz-empty nzNotFoundImage="simple"></nz-empty>
+</ng-template>
+
+<nz-table
+  #filterTable
+  *ngIf="listOfData; else noData"
+  nzTableLayout="fixed"
+  [nzData]="listOfData"
+>
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumns">
+        {{ column.name }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of filterTable.data">
+      <td>{{ data.Timestamp | date : "dd/MM/yyyy HH:mm:ss:SSS" }}</td>
+      <td>{{ data.Press | number }} bar</td>
+      <td>{{ data.Position }}</td>
+      <td>{{ data.Temp | number }}°</td>
+      <td>{{ data.Omega | number }} km/h</td>
+      <td>{{ data.Speed | number }} km/h</td>
+      <td>{{ data.Car_id }}</td>
+    </tr>
+  </tbody>
+</nz-table>

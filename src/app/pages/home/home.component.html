@@ -1,0 +1,42 @@
+<ng-template #indicatorTemplate>
+  <img
+    nz-image
+    nzSrc="https://d3nv2arudvw7ln.cloudfront.net/staticfolder/Tyre/resources/img/yellow-parentesi.png"
+    alt="logo"
+    class="spinner-image"
+  />
+</ng-template>
+<div class="spinner" *ngIf="loading; else content">
+  <nz-spin
+    nzSimple
+    [nzSpinning]="true"
+    [nzIndicator]="indicatorTemplate"
+  ></nz-spin>
+</div>
+
+<ng-template #content>
+  <app-select-cars
+    (onCarsSelected)="cronometer.startCronometer($event)"
+  ></app-select-cars>
+
+  <app-cronometer
+    #cronometer
+    (onCronometerStart)="handleStartCronometer()"
+  ></app-cronometer>
+  <div nz-row class="charts">
+    <div nz-col nzSpan="12">
+      <app-line-chart title="Front Left" #frontLeftChart></app-line-chart>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-line-chart title="Front Right" #frontRightChart></app-line-chart>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-line-chart title="Rear Left" #rearLeftChart></app-line-chart>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-line-chart title="Rear Right" #rearRightChart></app-line-chart>
+    </div>
+  </div>
+
+  <app-data-table></app-data-table>
+</ng-template>

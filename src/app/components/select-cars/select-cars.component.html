@@ -1,0 +1,37 @@
+<nz-modal
+  #modal
+  [nzVisible]="true"
+  nzTitle="Select the cars to be monitored"
+  [nzClosable]="false"
+  [nzOkDisabled]="listOfSelectedValue.length === 0"
+  nzOkText="start monitoring"
+  (nzOnOk)="modal.destroy(); onCarsSelected.emit(listOfSelectedValue)"
+  [nzCancelDisabled]="listOfSelectedValue.length === 0"
+  nzCancelText="Reset"
+  (nzOnCancel)="listOfSelectedValue = []"
+>
+  <ng-container *nzModalContent>
+    <nz-select
+      style="width: 100%"
+      nzMode="multiple"
+      nzPlaceHolder="Please select"
+      [(ngModel)]="listOfSelectedValue"
+    >
+      <nz-option
+        nzCustomContent
+        *ngFor="let option of carOptions"
+        [nzLabel]="option.label"
+        [nzValue]="option.value"
+      >
+        <img
+          *ngIf="option.imgPath"
+          [src]="option.imgPath"
+          alt="car"
+          width="40%"
+          style="padding-right: 20px"
+        />
+        {{ option.label }}
+      </nz-option>
+    </nz-select>
+  </ng-container>
+</nz-modal>

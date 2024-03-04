@@ -1,0 +1,27 @@
+<h1>Monitor of {{ this.carList.join(", ") }} sensor data</h1>
+
+<h2>Timestamp: {{ cronometer | date : "dd/MM/yyyy HH:mm:ss:SSS" }}</h2>
+<p>
+  Realtime data updates every 3 seconds and retrieves data for the last 5
+  minutes
+</p>
+
+<button
+  nz-button
+  nzType="primary"
+  (click)="startCronometer()"
+  *ngIf="!this.cronometerInterval && this.carList.length > 0"
+>
+  <span nz-icon nzType="play-circle" nzTheme="outline"></span>
+  Start
+</button>
+<button
+  nz-button
+  nzType="primary"
+  nzDanger
+  (click)="stopCronometer()"
+  *ngIf="this.cronometerInterval"
+>
+  <span nz-icon nzType="stop" nzTheme="outline"></span>
+  Stop
+</button>
